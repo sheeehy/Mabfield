@@ -21,11 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className="bg-black">
-        {" "}
-        <Navbar />
-        {children}
-      </body>
+      <body className="bg-black"> {children}</body>
     </html>
   );
 }
