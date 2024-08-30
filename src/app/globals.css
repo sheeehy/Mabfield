@@ -6,7 +6,24 @@
   width: 0;
   background: transparent;
 }
-/* globals.css */
+
 .custom-subtle-shadow {
   text-shadow: 0.25px 0.25px 0 rgba(255, 255, 255, 1);
+}
+
+.custom-subtle-shadow2 {
+  text-shadow: 10px 10px 1 rgb(0, 0, 0);
+}
+
+.text-outline-black {
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.bg-grid {
+  background-image: linear-gradient(to right, #dadada 1px, transparent 1px), linear-gradient(to bottom, #dadada 1px, transparent 1px);
+  background-size: 45px 45px; /* Adjust size to your preference */
 }
