@@ -6,7 +6,23 @@
   width: 0;
   background: transparent;
 }
-/* globals.css */
+
 .custom-subtle-shadow {
   text-shadow: 0.25px 0.25px 0 rgba(255, 255, 255, 1);
+}
+
+.custom-subtle-shadow2 {
+  text-shadow: 10px 10px 1 rgb(0, 0, 0);
+}
+
+.text-outline-black {
+  text-shadow:
+    -4px -4px 0 #000,
+    4px -4px 0 #000,
+    -4px 4px 0 #000,
+    4px 4px 0 #000,
+    -4px 0 0 #000,
+    4px 0 0 #000,
+    0 -4px 0 #000,
+    0 4px 0 #000;
 }
