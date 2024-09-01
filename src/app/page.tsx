@@ -48,7 +48,7 @@ export default function Home() {
       {videoFinished && (
         <div
           id="main-content"
-          className="flex  min-h-screen flex-col items-center py-24 px-4 text-black bg-gradient-to-b from-white  to-transparent"
+          className="flex min-h-screen flex-col items-center py-24 px-4 text-black bg-gradient-to-b from-white to-transparent"
           style={{ opacity: 0 }} // Start with opacity 0 for GSAP animation
         >
           {/* Your content goes here */}
@@ -63,10 +63,10 @@ export default function Home() {
           {/* Links animation */}
           <div id="links" className="flex justify-between gap-12 mt-20 font-[500]">
             <a href="/listen" className="select-none hover:opacity-80 transition ease-in-out">
-              <h1 className=" bg-black text-white px-5 py-3 border-2 rounded-md">Latest Episode</h1>
+              <h1 className="bg-black text-white px-5 py-3 border-2 rounded-md">Latest Episode</h1>
             </a>
             <a href="/episodes" className="select-none hover:opacity-80 transition ease-in-out">
-              <h1 className="bg-[#F2F2F2] text-[#797979] border-2  px-5 py-3 rounded-md">All Episodes</h1>
+              <h1 className="bg-[#F2F2F2] text-[#797979] border-2 px-5 py-3 rounded-md">All Episodes</h1>
             </a>
           </div>
         </div>
