@@ -1,13 +1,18 @@
 "use client";
-import { useEffect, useState } from "react";
+
+import { useEffect, useState, Suspense, lazy } from "react";
 import { gsap } from "gsap";
 import Mabfield from "./components/Mabfield";
 import { Maven_Pro } from "next/font/google";
 
 const mavenPro = Maven_Pro({ subsets: ["latin"] });
 
+// Lazy load the Spline component
+const LazySpline = lazy(() => import("@splinetool/react-spline"));
+
 export default function Home() {
   const [videoFinished, setVideoFinished] = useState(false);
+  const [splineLoaded, setSplineLoaded] = useState(false);
 
   useEffect(() => {
     const video = document.getElementById("intro-video") as HTMLVideoElement;
@@ -22,8 +27,8 @@ export default function Home() {
       // Fade in the main content
       gsap.to("#main-content", {
         opacity: 1,
-        duration: 0.5,
-        ease: "power2.out",
+        duration: 0.8,
+        ease: "power1.inOut",
       });
 
       // Mabfield animation
@@ -38,30 +43,31 @@ export default function Home() {
   }, [videoFinished]);
 
   return (
-    <div className="relative ">
+    <div className="relative">
       {!videoFinished && (
         <div className="fixed top-0 left-0 w-full h-full z-50">
-          <video id="intro-video" className="w-full h-full object-cover filter grayscale" src="/video3.mp4" autoPlay muted playsInline />
+          <video id="intro-video" className="w-full h-full object-cover filter grayscale" src="/video.mp4" autoPlay muted playsInline />
         </div>
       )}
 
       {videoFinished && (
         <div
           id="main-content"
-          className="flex min-h-screen flex-col items-center py-24 px-4 text-black bg-gradient-to-b from-white to-transparent"
+          className="flex min-h-screen flex-col items-center justify-center pb-24 px-4 text-black"
           style={{ opacity: 0 }} // Start with opacity 0 for GSAP animation
         >
-          {/* Your content goes here */}
+          <div className="h-full w-full absolute -z-10 ">
+            <video className="w-full h-full object-cover filter grayscale" src="/heroVideo.mp4" autoPlay loop muted playsInline />
+          </div>
 
-          {/* H2 tag animation */}
-          <div className="">
-            <h2 id="heading" className="text-black mt-28 font-[900] text-3xl font-[Inter] text-center z-10">
-              ALTERNATIVE MUSIC VIA IRELAND.
-            </h2>
+          {/* THIS DIV */}
+          <div className="z-50 text-center mt-0">
+            <h1 className="text-black font-[900] text-8xl mb-4 font-[Inter]">MABFIELD</h1>
+            <h2 className="text-black font-[700] text-2xl font-[Inter] tracking-wider ">ALTERNATIVE MUSIC VIA IRELAND.</h2>
           </div>
 
           {/* Links animation */}
-          <div id="links" className="flex justify-between gap-12 mt-20 font-[500]">
+          <div id="links" className="flex justify-between gap-12 mt-12 font-[500]">
             <a href="/listen" className="select-none hover:opacity-80 transition ease-in-out">
               <h1 className="bg-black text-white px-5 py-3 border-2 rounded-md">Latest Episode</h1>
             </a>
