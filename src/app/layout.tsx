@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Maven_Pro } from "next/font/google"; // Import Maven Pro font
 import { Inter } from "next/font/google"; // Import Maven Pro font
+import Footer from "./components/Footer";
 
 import Navbar from "./components/Navbar";
 import { GeistSans } from "geist/font/sans";
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className="bg-white  ">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
