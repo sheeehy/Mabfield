@@ -3,9 +3,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaXTwitter, FaYoutube, FaInstagram, FaSpotify, FaTiktok } from "react-icons/fa6";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useSpring, animated } from "react-spring";
 import Image from "next/image";
 import { Maven_Pro } from "next/font/google";
 import gsap from "gsap";
+import { IconBaseProps } from "react-icons";
 
 const mavenPro = Maven_Pro({ subsets: ["latin"] });
 
@@ -17,8 +19,18 @@ const Navbar: React.FC = () => {
   const imageRef = useRef<HTMLImageElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuItemsRef = useRef<HTMLDivElement>(null);
-  const burgerIconRef = useRef<SVGSVGElement>(null);
-  const closeIconRef = useRef<SVGSVGElement>(null);
+
+  const menuIconAnimation = useSpring({
+    opacity: isMenuOpen ? 0 : 1,
+    transform: `scale(${isMenuOpen ? 0.5 : 1})`,
+    config: { mass: 1, tension: 300, friction: 20 },
+  });
+
+  const closeIconAnimation = useSpring({
+    opacity: isMenuOpen ? 1 : 0,
+    transform: `scale(${isMenuOpen ? 1 : 0.5})`,
+    config: { mass: 1, tension: 300, friction: 20 },
+  });
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -81,30 +93,12 @@ const Navbar: React.FC = () => {
     }
   }, [isMenuOpen]);
 
-  useEffect(() => {
-    if (burgerIconRef.current && closeIconRef.current) {
-      if (isMenuOpen) {
-        gsap.to(burgerIconRef.current, { opacity: 0, duration: 0.3, display: 'none' });
-        gsap.fromTo(closeIconRef.current, 
-          { opacity: 0, rotate: -90, scale: 0.5 },
-          { opacity: 1, rotate: 0, scale: 1, duration: 0.3, display: 'block' }
-        );
-      } else {
-        gsap.to(closeIconRef.current, { opacity: 0, rotate: 90, scale: 0.5, duration: 0.3, display: 'none' });
-        gsap.fromTo(burgerIconRef.current, 
-          { opacity: 0, rotate: -90, scale: 0.5 },
-          { opacity: 1, rotate: 0, scale: 1, duration: 0.3, display: 'block' }
-        );
-      }
-    }
-  }, [isMenuOpen]);
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <nav className="bg-transparent mt-2 mx-4 lg:mx-12">
+    <nav className="bg-transparent mt-2 mx-4 lg:mx-12 select-none">
       <div className="text-[#797979] text-sm font-[500]">
         <div className="flex justify-between items-center px-4 lg:px-8 pt-6 bg-transparent">
           {/* Left: Social Media Icons (hidden on mobile) */}
@@ -144,8 +138,12 @@ const Navbar: React.FC = () => {
           {/* Burger Menu (visible only on mobile) */}
           <div className="lg:hidden">
             <button onClick={toggleMenu} className="text-[#797979] text-2xl z-50 relative w-8 h-8">
-              <FaBars  className="absolute inset-0" />
-              <FaTimes  className="absolute inset-0" style={{ display: 'none' }} />
+              <animated.div style={menuIconAnimation} className="absolute inset-0 flex items-center justify-center">
+                <FaBars />
+              </animated.div>
+              <animated.div style={closeIconAnimation} className="absolute inset-0 flex items-center justify-center">
+                <FaTimes />
+              </animated.div>
             </button>
           </div>
         </div>

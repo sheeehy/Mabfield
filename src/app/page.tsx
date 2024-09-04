@@ -46,7 +46,7 @@ export default function Home() {
           <video className="w-full h-[110vh] object-cover filter grayscale" src="/altVideo2.mp4" autoPlay loop muted playsInline preload="auto" />
         </div>
 
-        <div className="z-10 text-center sm:mt-0 mt-44">
+        <div className="z-10 text-center sm:mt-0 mt-44 pointer-events-none select-none">
           <p id="mainHeading" className="font-[900] text-[2rem] sm:text-[4rem] max-w-2xl leading-[1.1] text-black">
             ALTERNATIVE MUSIC VIA IRELAND.
           </p>
