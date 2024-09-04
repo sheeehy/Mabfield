@@ -22,39 +22,44 @@ export default function Home() {
     if (videoFinished && mainContentRef.current) {
       const tl = gsap.timeline();
       tl.to(mainContentRef.current, { opacity: 1, duration: 0.8, ease: "power4.inOut" })
-        .fromTo("#mabfield", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "bounce.out" }, "-=0.4")
-        .fromTo("#heading", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "bounce.out" }, "-=0.3")
-        .fromTo("#links", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "bounce.out" }, "-=0.2");
+        .fromTo("#mainHeading", 
+          { opacity: 0, y: 30, scale: 0.9 }, 
+          { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "elastic.out(1, 0.5)" },
+          "-=0.6"
+        )
+        .fromTo("#links", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "back.out(2)" }, "-=0.8")
+        .fromTo("#altVideo", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.inOut" }, "-=0.4");
     }
   }, [videoFinished]);
 
   return (
     <div className="relative">
       {!videoFinished && (
-        <div className="fixed inset-0 z-50">
+        <div className="fixed inset-0 z-50 hidden sm:block">
           <video ref={videoRef} className="w-full h-full object-cover filter grayscale" src="/video.mp4" autoPlay muted playsInline preload="auto" />
         </div>
       )}
 
       <div ref={mainContentRef} className="flex min-h-screen flex-col items-center justify-center pb-24 px-4 text-black opacity-0">
-        <div className="absolute inset-0 -z-10">
-          <video className="w-full h-full object-cover filter grayscale" src="/altVideo.mp4" autoPlay loop muted playsInline preload="auto" />
+        <div id="altVideo" className="absolute inset-0 -z-10 opacity-0 hidden sm:block" style={{ top: '-13vh' }}>
+          <video className="w-full h-[110vh] object-cover filter grayscale" src="/altVideo2.mp4" autoPlay loop muted playsInline preload="auto" />
         </div>
 
-        <div className="z-50 text-center mt-0">
-          <p className=" font-[900] sm:text-[4.5rem] max-w-3xl  text-[2rem] leading-[1.1] text-black "> ALTERNATIVE MUSIC VIA IRELAND.</p>{" "}
+        <div className="z-10 text-center mt-0">
+          <p id="mainHeading" className="font-[900] text-[2rem] sm:text-[4rem] max-w-2xl leading-[1.1] text-black">
+            ALTERNATIVE MUSIC VIA IRELAND.
+          </p>
         </div>
 
-        <div id="links" className="flex justify-between gap-12 mt-12 font-[500]">
-          <a href="/" className="select-none hover:opacity-80 transition ease-in-out">
-            <h1 className="bg-black text-white px-5 py-3 border-2 rounded-md">Latest Episode</h1>
+        <div id="links" className="flex  sm:flex-row justify-center gap-6 sm:gap-12 mt-8 sm:mt-12 font-[500]">
+          <a href="/" className="select-none hover:opacity-80 transition ease-in-out w-full sm:w-40">
+            <h1 className="bg-black text-white px-5 py-3 border-2 rounded-md text-center whitespace-nowrap">Latest Episode</h1>
           </a>
-          <a href="/" className="select-none hover:opacity-80 transition ease-in-out">
-            <h1 className="bg-[#F2F2F2] text-[#797979] border-2 px-5 py-3 rounded-md">All Episodes</h1>
+          <a href="/" className="select-none hover:opacity-80 transition ease-in-out w-full sm:w-40">
+            <h1 className="bg-[#F2F2F2] text-[#797979] border-2 px-5 py-3 rounded-md text-center whitespace-nowrap">All Episodes</h1>
           </a>
         </div>
       </div>
-      <div className="bg-red-800"></div>
     </div>
   );
 }

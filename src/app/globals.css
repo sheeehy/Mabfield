@@ -27,3 +27,11 @@
   background-image: linear-gradient(to right, #dadada 1px, transparent 1px), linear-gradient(to bottom, #dadada 1px, transparent 1px);
   background-size: 45px 45px; /* Adjust size to your preference */
 }
+
+.social-link {
+  transition: opacity 0.15s ease-in-out;
+}
+
+.social-link:hover {
+  opacity: 0.75;
+}

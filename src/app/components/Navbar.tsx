@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaXTwitter, FaYoutube, FaInstagram, FaSpotify, FaTiktok } from "react-icons/fa6";
+import { FaBars, FaTimes } from "react-icons/fa";
 import Image from "next/image";
 import { Maven_Pro } from "next/font/google";
 import gsap from "gsap";
@@ -9,115 +10,141 @@ import gsap from "gsap";
 const mavenPro = Maven_Pro({ subsets: ["latin"] });
 
 const Navbar: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const logoRef = useRef<HTMLAnchorElement>(null);
   const socialsRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const menuItemsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
+    // 3-second delay before animations start
     tl.delay(3);
 
-    // Animate the image first
+    // Animate the logo image
     if (imageRef.current) {
       tl.fromTo(
         imageRef.current,
-        { opacity: 0, y: 0, scale: 0.8 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.5,
-          ease: "power4.inOut",
-        }
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 1, ease: "back.out(1.7)" }
       );
     }
 
-    // Then animate the logo
-    if (logoRef.current) {
-      tl.fromTo(logoRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1, ease: "power4.inOut" });
-    }
-
-    // Then animate the social icons and links
+    // Animate social icons and nav links separately but with identical animations
     if (socialsRef.current && linksRef.current) {
-      tl.fromTo(socialsRef.current.children, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "power1.inOut" }, "-=0.5");
+      const socialIcons = socialsRef.current.children;
+      const navLinks = linksRef.current.querySelectorAll("a");
 
-      const links = Array.from(linksRef.current.querySelectorAll("a")).reverse();
+      const animateLinks = (links: Element[] | NodeListOf<Element>) => {
+        tl.fromTo(
+          links,
+          { opacity: 0, y: 20 },
+          { 
+            opacity: 1, 
+            y: 0, 
+            duration: 0.8, 
+            stagger: 0.05, 
+            ease: "back.out(1.7)"
+          },
+          "-=0.4" // Start slightly before the previous animation finishes
+        );
+      };
 
-      tl.fromTo(links, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.2, ease: "power1.inOut" }, "<");
+      // Animate social icons
+      animateLinks(Array.from(socialIcons));
+
+      // Animate nav links
+      animateLinks(Array.from(navLinks));
     }
   }, []);
 
+  useEffect(() => {
+    if (menuRef.current && menuItemsRef.current) {
+      const menu = menuRef.current;
+      const menuItems = menuItemsRef.current.children;
+
+      if (isMenuOpen) {
+        gsap.to(menu, { x: "0%", duration: 0.5, ease: "power3.out" });
+        gsap.fromTo(menuItems, 
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power3.out", delay: 0.2 }
+        );
+      } else {
+        gsap.to(menu, { x: "100%", duration: 0.5, ease: "power3.in" });
+        gsap.to(menuItems, { y: 20, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power3.in" });
+      }
+    }
+  }, [isMenuOpen]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <nav className="lg:block hidden pb-2 bg-transparent mt-2 mx-12  ">
+    <nav className="bg-transparent mt-2 mx-4 lg:mx-12">
       <div className="text-[#797979] text-sm font-[500]">
-        <div className="flex justify-between items-center px-8 pt-6 bg-transparent">
-          {/* Left: Social Media Icons */}
-          <div ref={socialsRef} className="flex-shrink-0 flex justify-center items-center gap-5 text-lg">
-            <div className="hover:opacity-75 transition ease-in-out">
-              <a href="https://www.youtube.com/c/Mabfield" target="_blank" className="">
-                <FaYoutube />
-              </a>
-            </div>
-            <div className="hover:opacity-75 transition ease-in-out">
-              <a href="https://www.instagram.com/mabfield/" target="_blank" className="">
-                <FaInstagram />
-              </a>
-            </div>
-            <div className="hover:opacity-75 transition ease-in-out">
-              <a href="https://x.com/mabfield_" target="_blank" className="">
-                <FaXTwitter />
-              </a>
-            </div>
-            <div className="hover:opacity-75 transition ease-in-out">
-              <a href="https://open.spotify.com/user/mabfield" target="_blank" className="">
-                <FaSpotify />
-              </a>
-            </div>
-            <div className="hover:opacity-75 transition ease-in-out">
-              <a href="https://www.tiktok.com/@mabfield" target="_blank" className="">
-                <FaTiktok />
-              </a>
-            </div>
+        <div className="flex justify-between items-center px-4 lg:px-8 pt-6 bg-transparent">
+          {/* Left: Social Media Icons (hidden on mobile) */}
+          <div ref={socialsRef} className="hidden lg:flex flex-shrink-0 justify-center items-center gap-5 text-lg">
+            <a href="https://www.youtube.com/c/Mabfield" target="_blank" className="social-link"><FaYoutube /></a>
+            <a href="https://www.instagram.com/mabfield/" target="_blank" className="social-link"><FaInstagram /></a>
+            <a href="https://x.com/mabfield_" target="_blank" className="social-link"><FaXTwitter /></a>
+            <a href="https://open.spotify.com/user/mabfield" target="_blank" className="social-link"><FaSpotify /></a>
+            <a href="https://www.tiktok.com/@mabfield" target="_blank" className="social-link"><FaTiktok /></a>
           </div>
 
-          <div className="absolute left-1/2 transform -translate-x-1/2 hover:opacity-70 transition ease-in-out hover:scale-105 mb-2">
-            <a ref={logoRef} href="/" className={`${mavenPro.className} font-[900] text-black text-xl `}>
+          {/* Center: Logo */}
+          <div className="lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 hover:opacity-70 transition ease-in-out hover:scale-105 mb-2">
+            <a ref={logoRef} href="/" className={`${mavenPro.className} font-[900] text-black text-xl`}>
               <Image
                 src="/mabfieldWordmark.png"
                 alt="Mabfield Logo"
                 className=""
-                width={200}
-                height={200}
+                width={150}
+                height={150}
                 quality={100}
                 priority={true}
-                ref={imageRef} // Attach the ref to the image
+                ref={imageRef}
               />
             </a>
           </div>
 
-          {/* Right: Navigation Links */}
-          <div ref={linksRef} className="flex-shrink-0 text-[#797979] font-[700]">
+          {/* Right: Navigation Links (hidden on mobile) */}
+          <div ref={linksRef} className="hidden lg:block flex-shrink-0 text-[#797979] font-[700]">
             <div className="flex justify-center items-center gap-12">
-              <div className="hover:opacity-75 transition ease-in-out">
-                <a className="" href="/listen">
-                  LISTEN
-                </a>
-              </div>
-
-              <div className="hover:opacity-75 transition ease-in-out">
-                <a className="" href="/episodes">
-                  EPISODES
-                </a>
-              </div>
-
-              <div className="hover:opacity-75 transition ease-in-out">
-                <a className="" href="/about">
-                  ABOUT
-                </a>
-              </div>
+              <a href="/listen" className="hover:opacity-75 transition ease-in-out">LISTEN</a>
+              <a href="/episodes" className="hover:opacity-75 transition ease-in-out">EPISODES</a>
+              <a href="/about" className="hover:opacity-75 transition ease-in-out">ABOUT</a>
             </div>
+          </div>
+
+          {/* Burger Menu (visible only on mobile) */}
+          <div className="lg:hidden">
+            <button onClick={toggleMenu} className="text-[#797979] text-2xl z-50 relative">
+              {isMenuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Full Screen Mobile Menu */}
+      <div 
+        ref={menuRef} 
+        className="lg:hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center transform translate-x-full"
+      >
+        <div ref={menuItemsRef} className="flex flex-col items-center gap-8 text-[#797979] font-[700] mb-12">
+          <a href="/listen" className="text-3xl" onClick={toggleMenu}>LISTEN</a>
+          <a href="/episodes" className="text-3xl" onClick={toggleMenu}>EPISODES</a>
+          <a href="/about" className="text-3xl" onClick={toggleMenu}>ABOUT</a>
+          <div className="flex justify-center items-center gap-8 text-3xl mt-8">
+            <a href="https://www.youtube.com/c/Mabfield" target="_blank" className="social-link"><FaYoutube /></a>
+            <a href="https://www.instagram.com/mabfield/" target="_blank" className="social-link"><FaInstagram /></a>
+            <a href="https://x.com/mabfield_" target="_blank" className="social-link"><FaXTwitter /></a>
+            <a href="https://open.spotify.com/user/mabfield" target="_blank" className="social-link"><FaSpotify /></a>
+            <a href="https://www.tiktok.com/@mabfield" target="_blank" className="social-link"><FaTiktok /></a>
           </div>
         </div>
       </div>
