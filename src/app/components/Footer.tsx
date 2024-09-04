@@ -7,7 +7,8 @@ const mavenPro = Maven_Pro({ subsets: ["latin"] });
 export default function Footer() {
   return (
     <footer className="bg-transparent text-[#797979] w-full">
-              <div className="bg-red-500  h-12 w-full"></div>
+      
+
 
       <div className="container mx-auto sm:px-20 px-4 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
