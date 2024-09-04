@@ -97,7 +97,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Center: Logo */}
-          <div className="lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 hover:opacity-70 transition ease-in-out hover:scale-105 mb-2">
+          <div className="lg:absolute z-50  lg:left-1/2 lg:transform lg:-translate-x-1/2 hover:opacity-70 transition ease-in-out hover:scale-105 mb-2">
             <a ref={logoRef} href="/" className={`${mavenPro.className} font-[900] text-black text-xl`}>
               <Image
                 src="/mabfieldWordmark.png"
@@ -133,13 +133,13 @@ const Navbar: React.FC = () => {
       {/* Full Screen Mobile Menu */}
       <div 
         ref={menuRef} 
-        className="lg:hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center transform translate-x-full"
+        className="lg:hidden fixed inset-0 bg-white z-40 flex flex-col justify-center transform translate-x-full"
       >
-        <div ref={menuItemsRef} className="flex flex-col items-center gap-8 text-[#797979] font-[700] mb-12">
+        <div ref={menuItemsRef} className="flex flex-col items-start gap-8 text-[#797979] font-[700] mb-12 px-8">
           <a href="/listen" className="text-3xl" onClick={toggleMenu}>LISTEN</a>
           <a href="/episodes" className="text-3xl" onClick={toggleMenu}>EPISODES</a>
           <a href="/about" className="text-3xl" onClick={toggleMenu}>ABOUT</a>
-          <div className="flex justify-center items-center gap-8 text-3xl mt-8">
+          <div className="flex justify-start items-center gap-8 text-3xl mt-8">
             <a href="https://www.youtube.com/c/Mabfield" target="_blank" className="social-link"><FaYoutube /></a>
             <a href="https://www.instagram.com/mabfield/" target="_blank" className="social-link"><FaInstagram /></a>
             <a href="https://x.com/mabfield_" target="_blank" className="social-link"><FaXTwitter /></a>

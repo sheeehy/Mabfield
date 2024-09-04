@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { Maven_Pro } from "next/font/google";
+import Image from "next/image"
 
 const mavenPro = Maven_Pro({ subsets: ["latin"] });
 
@@ -40,7 +41,7 @@ export default function Home() {
         </div>
       )}
 
-      <div ref={mainContentRef} className="flex min-h-screen flex-col items-center justify-center pb-24 px-4 text-black opacity-0">
+      <div ref={mainContentRef} className="flex min-h-screen flex-col items-center justify-center sm:pb-24 pb-8  px-4 text-black opacity-0">
         <div id="altVideo" className="absolute inset-0 -z-10 opacity-0 hidden sm:block" style={{ top: '-13vh' }}>
           <video className="w-full h-[110vh] object-cover filter grayscale" src="/altVideo2.mp4" autoPlay loop muted playsInline preload="auto" />
         </div>
@@ -58,6 +59,19 @@ export default function Home() {
           <a href="/" className="select-none hover:opacity-80 transition ease-in-out w-full sm:w-40">
             <h1 className="bg-[#F2F2F2] text-[#797979] border-2 px-5 py-3 rounded-md text-center whitespace-nowrap">All Episodes</h1>
           </a>
+        </div>
+        <div>
+        <div className="block lg:hidden mt-20 ">
+          <Image
+            src="/Mobile1.png"
+            alt="Mobile App Screenshot"
+            width={250}
+            height={500}
+            quality={100}
+            priority={true}
+            className=""
+          />
+        </div>
         </div>
       </div>
     </div>
