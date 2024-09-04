@@ -63,7 +63,7 @@ export default function Home() {
         <div>
         <div className="block lg:hidden mt-20 ">
           <Image
-            src="/Mobile1.png"
+            src="/Mobile1.PNG"
             alt="Mobile App Screenshot"
             width={250}
             height={500}
