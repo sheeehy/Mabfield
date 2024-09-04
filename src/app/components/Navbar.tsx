@@ -17,6 +17,8 @@ const Navbar: React.FC = () => {
   const imageRef = useRef<HTMLImageElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuItemsRef = useRef<HTMLDivElement>(null);
+  const burgerIconRef = useRef<SVGSVGElement>(null);
+  const closeIconRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -79,6 +81,24 @@ const Navbar: React.FC = () => {
     }
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    if (burgerIconRef.current && closeIconRef.current) {
+      if (isMenuOpen) {
+        gsap.to(burgerIconRef.current, { opacity: 0, duration: 0.3, display: 'none' });
+        gsap.fromTo(closeIconRef.current, 
+          { opacity: 0, rotate: -90, scale: 0.5 },
+          { opacity: 1, rotate: 0, scale: 1, duration: 0.3, display: 'block' }
+        );
+      } else {
+        gsap.to(closeIconRef.current, { opacity: 0, rotate: 90, scale: 0.5, duration: 0.3, display: 'none' });
+        gsap.fromTo(burgerIconRef.current, 
+          { opacity: 0, rotate: -90, scale: 0.5 },
+          { opacity: 1, rotate: 0, scale: 1, duration: 0.3, display: 'block' }
+        );
+      }
+    }
+  }, [isMenuOpen]);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -123,8 +143,9 @@ const Navbar: React.FC = () => {
 
           {/* Burger Menu (visible only on mobile) */}
           <div className="lg:hidden">
-            <button onClick={toggleMenu} className="text-[#797979] text-2xl z-50 relative">
-              {isMenuOpen ? <FaTimes /> : <FaBars />}
+            <button onClick={toggleMenu} className="text-[#797979] text-2xl z-50 relative w-8 h-8">
+              <FaBars  className="absolute inset-0" />
+              <FaTimes  className="absolute inset-0" style={{ display: 'none' }} />
             </button>
           </div>
         </div>

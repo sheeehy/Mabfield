@@ -61,12 +61,12 @@ export default function Home() {
           </a>
         </div>
         <div>
-        <div className="block lg:hidden mt-20 ">
+        <div className="block lg:hidden mt-16">
           <Image
             src="/Mobile1.PNG"
-            alt="Mobile App Screenshot"
-            width={250}
-            height={500}
+            alt="Mobile Hero Icons"
+            width={200}
+            height={400}
             quality={100}
             priority={true}
             className=""
