@@ -43,7 +43,7 @@ export default function Home() {
 
       <div ref={mainContentRef} className="flex min-h-screen flex-col items-center justify-center sm:pb-24 pb-8  px-4 text-black opacity-0">
         <div id="altVideo" className="absolute inset-0 -z-10 opacity-0 hidden sm:block" style={{ top: '-13vh' }}>
-          <video className="w-full h-[110vh] object-cover filter grayscale" src="/altVideo2.mp4" autoPlay loop muted playsInline preload="auto" />
+          <video className="w-full h-[102vh] mt-6 object-cover filter grayscale" src="/altVideo6.mp4" autoPlay loop muted playsInline preload="auto" />
         </div>
 
         <div className="z-10 text-center sm:mt-0 mt-44 pointer-events-none select-none">
