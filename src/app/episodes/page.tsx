@@ -7,7 +7,7 @@ const Page: React.FC = () => {
     <div>
       <Navbar animationDelay={0}/>
     <div className="flex justify-center items-center my-64">
-      <h1 className="font-[900] text-7xl ">LISTEN</h1>{" "}
+      <h1 className="font-[900] text-7xl ">EPISODES</h1>{" "}
     </div>
     </div>
   );

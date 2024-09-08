@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useRef, useState } from "react";
 import { FaXTwitter, FaYoutube, FaInstagram, FaSpotify, FaTiktok } from "react-icons/fa6";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -7,11 +5,14 @@ import { useSpring, animated } from "react-spring";
 import Image from "next/image";
 import { Maven_Pro } from "next/font/google";
 import gsap from "gsap";
-import { IconBaseProps } from "react-icons";
 
 const mavenPro = Maven_Pro({ subsets: ["latin"] });
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  animationDelay?: number;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ animationDelay = 0 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const logoRef = useRef<HTMLAnchorElement>(null);
   const socialsRef = useRef<HTMLDivElement>(null);
@@ -35,10 +36,8 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    // 3-second delay before animations start
-    tl.delay(3);
+    tl.delay(animationDelay);
 
-    // Animate the logo image
     if (imageRef.current) {
       tl.fromTo(
         imageRef.current,
@@ -47,7 +46,6 @@ const Navbar: React.FC = () => {
       );
     }
 
-    // Animate social icons and nav links separately but with identical animations
     if (socialsRef.current && linksRef.current) {
       const socialIcons = socialsRef.current.children;
       const navLinks = linksRef.current.querySelectorAll("a");
@@ -55,7 +53,7 @@ const Navbar: React.FC = () => {
       const animateLinks = (links: Element[] | NodeListOf<Element>) => {
         tl.fromTo(
           links,
-          { opacity: 0, y: 20 },
+          { opacity: 0, y: 0 },
           { 
             opacity: 1, 
             y: 0, 
@@ -63,17 +61,14 @@ const Navbar: React.FC = () => {
             stagger: 0.05, 
             ease: "back.out(1.7)"
           },
-          "-=0.4" // Start slightly before the previous animation finishes
+          "-=0.4"
         );
       };
 
-      // Animate social icons
       animateLinks(Array.from(socialIcons));
-
-      // Animate nav links
       animateLinks(Array.from(navLinks));
     }
-  }, []);
+  }, [animationDelay]);
 
   useEffect(() => {
     if (menuRef.current && menuItemsRef.current) {
@@ -103,22 +98,22 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center px-4 lg:px-8 pt-6 bg-transparent">
           {/* Left: Social Media Icons (hidden on mobile) */}
           <div ref={socialsRef} className="hidden lg:flex flex-shrink-0 justify-center items-center gap-5 text-lg">
-            <a href="https://www.youtube.com/c/Mabfield" target="_blank" className="social-link"><FaYoutube /></a>
-            <a href="https://www.instagram.com/mabfield/" target="_blank" className="social-link"><FaInstagram /></a>
-            <a href="https://x.com/mabfield_" target="_blank" className="social-link"><FaXTwitter /></a>
-            <a href="https://open.spotify.com/user/mabfield" target="_blank" className="social-link"><FaSpotify /></a>
-            <a href="https://www.tiktok.com/@mabfield" target="_blank" className="social-link"><FaTiktok /></a>
+            <a href="https://www.youtube.com/c/Mabfield" target="_blank" className="social-link opacity-0"><FaYoutube /></a>
+            <a href="https://www.instagram.com/mabfield/" target="_blank" className="social-link opacity-0"><FaInstagram /></a>
+            <a href="https://x.com/mabfield_" target="_blank" className="social-link opacity-0"><FaXTwitter /></a>
+            <a href="https://open.spotify.com/user/mabfield" target="_blank" className="social-link opacity-0"><FaSpotify /></a>
+            <a href="https://www.tiktok.com/@mabfield" target="_blank" className="social-link opacity-0"><FaTiktok /></a>
           </div>
 
           {/* Center: Logo */}
-          <div className="lg:absolute z-50  lg:left-1/2 lg:transform lg:-translate-x-1/2 hover:opacity-70 transition ease-in-out hover:scale-105 mb-2">
+          <div className="lg:absolute z-50 lg:left-1/2 lg:transform lg:-translate-x-1/2 hover:opacity-70 transition ease-in-out hover:scale-105 mb-2">
             <a ref={logoRef} href="/" className={`${mavenPro.className} font-[900] text-black text-xl`}>
               <Image
                 src="/mabfieldWordmark.png"
                 alt="Mabfield Logo"
-                className=""
-                width={150}
-                height={150}
+                className="opacity-0"
+                width={200}
+                height={200}
                 quality={100}
                 priority={true}
                 ref={imageRef}
@@ -129,9 +124,9 @@ const Navbar: React.FC = () => {
           {/* Right: Navigation Links (hidden on mobile) */}
           <div ref={linksRef} className="hidden lg:block flex-shrink-0 text-[#797979] font-[700]">
             <div className="flex justify-center items-center gap-12">
-              <a href="/listen" className="hover:opacity-75 transition ease-in-out">LISTEN</a>
-              <a href="/episodes" className="hover:opacity-75 transition ease-in-out">EPISODES</a>
-              <a href="/about" className="hover:opacity-75 transition ease-in-out">ABOUT</a>
+              <a href="/listen" className="hover:opacity-75 transition ease-in-out opacity-0">LISTEN</a>
+              <a href="/episodes" className="hover:opacity-75 transition ease-in-out opacity-0">EPISODES</a>
+              <a href="/about" className="hover:opacity-75 transition ease-in-out opacity-0">ABOUT</a>
             </div>
           </div>
 
