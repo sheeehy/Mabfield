@@ -24,7 +24,8 @@
 }
 
 .bg-grid {
-  background-image: linear-gradient(to right, #dadada 1px, transparent 1px), linear-gradient(to bottom, #dadada 1px, transparent 1px);
+  background-image: linear-gradient(to right, #dadada 1px, transparent 1px),
+    linear-gradient(to bottom, #dadada 1px, transparent 1px);
   background-size: 45px 45px; /* Adjust size to your preference */
 }
 
@@ -34,4 +35,119 @@
 
 .social-link:hover {
   opacity: 0.75;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section {
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: grayscale(100);
+}
+
+.hero {
+  height: 100vh;
+}
+.hero .img {
+  width: 50%;
+  aspect-ratio: 1;
+}
+
+.main {
+  width: 100vw;
+  height: 150vh;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.row {
+  position: relative;
+  width: 100vw;
+  margin: 1em 0;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+.card {
+  position: relative;
+  width: 40%;
+  height: 360px;
+  border-radius: 0.75em;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.main-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  overflow: hidden;
+  transform: scale(0);
+}
+
+.copy {
+  margin: 2em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  position: relative;
+  margin: 0.5em 0;
+  width: max-content;
+  height: 28px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.line p {
+  position: relative;
+  font-size: 24px;
+  transform: translateY(30px);
+}
+
+.button {
+  position: relative;
+  padding: 1em 2em;
+  font-size: 18px;
+  background: none;
+  outline: none;
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: 50%;
+    height: 50%;
+  }
 }
