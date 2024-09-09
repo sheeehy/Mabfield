@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ReactLenis } from "lenis/react";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +13,7 @@ const Page: React.FC = () => {
   useEffect(() => {
     const ScrollTriggerSettings = {
       trigger: ".main",
-      start: "top 25%",
+      start: window.innerWidth < 768 ? "top 50%" : "top 40%", // Conditional start based on screen width
       toggleActions: "play reverse play reverse",
     };
 
@@ -90,10 +91,24 @@ const Page: React.FC = () => {
       rows.push(
         <div className="row" key={i}>
           <div className="card card-left">
-            <img src={`/img-${2 * i - 1}.jpg`} alt="" />
+            <Image
+              src={`/img-${2 * i - 1}.jpg`}
+              alt=""
+              width={600}
+              height={600}
+              priority={true}
+              quality={100}
+            />
           </div>
           <div className="card card-right">
-            <img src={`/img-${2 * i}.jpg`} alt="" />
+            <Image
+              src={`/img-${2 * i}.jpg`}
+              alt=""
+              width={600}
+              height={600}
+              priority={true}
+              quality={100}
+            />
           </div>
         </div>
       );
@@ -105,11 +120,48 @@ const Page: React.FC = () => {
     <div>
       <Navbar animationDelay={0} />
       <ReactLenis root>
-        <section className="hero"></section>
-        <section className="main">
+        <section className="hero mt-44 px-4 sm:px-20 sm:text-2xl text-lg sm:text-center font-[500] ">
+          <div className="flex-col space-y-12 max-w-3xl  justify-center items-center">
+            <h1 className="">
+              Founded in 2018 by Jack Rapanakis and Dylan Murphy, Belfast based
+              music platform Mabfield was created with a mission to showcase
+              emerging artists in Ireland and beyond and fill a void for quality
+              grassroots content.
+            </h1>
+
+            <h1>
+              Progressing from playlist curation into a weekly podcast about
+              alternative music and hip hop in Ireland, the pair have
+              interviewed artists like Jordan Adetunji, Biig Piig and hosted a
+              sold out live podcast in Belfast.{" "}
+            </h1>
+
+            <h1>
+              Throughout the podcast episodes they hosted freestyles and
+              collaborated with the BBC to create the three part radio series
+              'The Evolution of Irish Hip Hop'. The platform took a brief hiatus
+              while Dylan served as Head of Content at District Magazine for 5
+              years.{" "}
+            </h1>
+
+            <h1>
+              Now, Mabfield returns with a renewed ambition and half a decade of
+              top level experience to cut through the noise, celebrate the
+              artists shaping culture and connect Ireland to the world.
+            </h1>
+          </div>
+        </section>
+        <section className="main sm:mt-44">
           <div className="main-content">
             <div className="logo">
-              <img src="logo.png" alt="" />
+              <Image
+                src="/logo.png"
+                alt=""
+                width={100}
+                height={100}
+                priority={true}
+                quality={100}
+              />
             </div>
 
             <div className="copy ">

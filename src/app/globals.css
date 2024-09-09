@@ -41,12 +41,6 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-
 img {
   width: 100%;
   height: 100%;
@@ -63,7 +57,7 @@ section {
 }
 
 .hero {
-  height: 100vh;
+  height: 90vh;
 }
 .hero .img {
   width: 50%;
@@ -147,7 +141,8 @@ section {
 
 @media (max-width: 900px) {
   .card {
-    width: 50%;
-    height: 50%;
+    width: 80%;
+    height: 80%;
+    border-radius: 0.5em;
   }
 }
