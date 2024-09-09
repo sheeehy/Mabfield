@@ -128,17 +128,6 @@ section {
   font-size: 24px;
   transform: translateY(30px);
 }
-
-.button {
-  position: relative;
-  padding: 1em 2em;
-  font-size: 18px;
-  background: none;
-  outline: none;
-  transform: translateY(30px);
-  opacity: 0;
-}
-
 @media (max-width: 900px) {
   .card {
     width: 80%;

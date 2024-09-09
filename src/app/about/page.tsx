@@ -139,9 +139,9 @@ const Page: React.FC = () => {
             <h1>
               Throughout the podcast episodes they hosted freestyles and
               collaborated with the BBC to create the three part radio series
-              'The Evolution of Irish Hip Hop'. The platform took a brief hiatus
-              while Dylan served as Head of Content at District Magazine for 5
-              years.{" "}
+              &apos;The Evolution of Irish Hip Hop&apos;. The platform took a
+              brief hiatus while Dylan served as Head of Content at District
+              Magazine for 5 years.{" "}
             </h1>
 
             <h1>
@@ -174,10 +174,6 @@ const Page: React.FC = () => {
               <div className="line">
                 <p>Alternative sounds via Ireland.</p>
               </div>
-            </div>
-
-            <div className="btn">
-              <button>Latest Episodes</button>
             </div>
           </div>
           {generateRows()}
