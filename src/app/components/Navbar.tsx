@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaXTwitter, FaYoutube, FaInstagram, FaSpotify, FaTiktok } from "react-icons/fa6";
+import { FaXTwitter, FaYoutube, FaInstagram, FaSpotify, FaTiktok, FaDiscord } from "react-icons/fa6";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useSpring, animated } from "react-spring";
 import Image from "next/image";
@@ -98,22 +98,36 @@ const Navbar: React.FC<NavbarProps> = ({ animationDelay = 0 }) => {
         <div className="flex justify-between items-center px-4 lg:px-8 pt-6 bg-transparent">
           {/* Left: Social Media Icons (hidden on mobile) */}
           <div ref={socialsRef} className="hidden lg:flex flex-shrink-0 justify-center items-center gap-5 text-lg">
-            <a href="https://www.youtube.com/c/Mabfield" target="_blank" className="social-link opacity-0"><FaYoutube /></a>
-            <a href="https://www.instagram.com/mabfield/" target="_blank" className="social-link opacity-0"><FaInstagram /></a>
-            <a href="https://x.com/mabfield_" target="_blank" className="social-link opacity-0"><FaXTwitter /></a>
-            <a href="https://open.spotify.com/user/mabfield" target="_blank" className="social-link opacity-0"><FaSpotify /></a>
-            <a href="https://www.tiktok.com/@mabfield" target="_blank" className="social-link opacity-0"><FaTiktok /></a>
+            <div className="hover:opacity-70 transition ease-in-out">
+            <a href="https://www.youtube.com/c/Mabfield" target="_blank" className="hover:opacity-70 transition ease-in-out social-link "><FaYoutube /></a>
+            </div>
+            <div className="hover:opacity-70 transition ease-in-out">
+            <a href="https://www.instagram.com/mabfield/" target="_blank" className="social-link "><FaInstagram /></a>
+            </div>
+            <div className="hover:opacity-70 transition ease-in-out">
+            <a href="https://x.com/mabfield_" target="_blank" className="social-link "><FaXTwitter /></a>
+            </div>
+            <div className="hover:opacity-70 transition ease-in-out">
+            <a href="https://open.spotify.com/user/mabfield" target="_blank" className="social-link "><FaSpotify /></a>
+            </div>
+            <div className="hover:opacity-70 transition ease-in-out">
+            <a href="https://www.tiktok.com/@mabfield" target="_blank" className="social-link "><FaTiktok /></a>
+            </div>
+            <div className="hover:opacity-70 transition ease-in-out">
+            <a href="/" target="_blank" className="social-link "><FaDiscord /></a>
+</div>
+
           </div>
 
           {/* Center: Logo */}
-          <div className="lg:absolute z-50 lg:left-1/2 lg:transform lg:-translate-x-1/2 hover:opacity-70 transition ease-in-out hover:scale-105 mb-2">
+          <div className="lg:absolute z-50 lg:left-1/2 lg:transform lg:-translate-x-1/2 hover:opacity-70 transition ease-in-out hover:scale-105 ">
             <a ref={logoRef} href="/" className={`${mavenPro.className} font-[900] text-black text-xl`}>
               <Image
                 src="/mabfieldWordmark.png"
                 alt="Mabfield Logo"
                 className="opacity-0"
-                width={200}
-                height={200}
+                width={150}
+                height={150}
                 quality={100}
                 priority={true}
                 ref={imageRef}
@@ -124,9 +138,17 @@ const Navbar: React.FC<NavbarProps> = ({ animationDelay = 0 }) => {
           {/* Right: Navigation Links (hidden on mobile) */}
           <div ref={linksRef} className="hidden lg:block flex-shrink-0 text-[#797979] font-[700]">
             <div className="flex justify-center items-center gap-12">
-              <a href="/listen" className="hover:opacity-75 transition ease-in-out opacity-0">LISTEN</a>
-              <a href="/episodes" className="hover:opacity-75 transition ease-in-out opacity-0">EPISODES</a>
-              <a href="/about" className="hover:opacity-75 transition ease-in-out opacity-0">ABOUT</a>
+              <div className="hover:opacity-75 transition ease-in-out ">
+              <a href="/listen" className=" ">LISTEN</a>
+              </div>
+              <div className="hover:opacity-75 transition ease-in-out ">
+
+              <a href="/episodes" className=" ">EPISODES</a>
+              </div>
+              <div className="hover:opacity-75 transition ease-in-out ">
+
+              <a href="/about" className=" ">ABOUT</a>
+              </div>
             </div>
           </div>
 

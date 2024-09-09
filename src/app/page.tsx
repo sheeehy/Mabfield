@@ -77,13 +77,13 @@ export default function Home() {
             </p>
           </div>
 
-          <div id="links" className="flex justify-center gap-6 sm:gap-12 mt-8 sm:mt-10 font-[500]">
+          <div id="links" className="flex justify-center gap-6 sm:gap-14 mt-8 sm:mt-8 font-[500] sm:pl-3">
             <div className="flex-1 text-center">
-              <a href="/" className="select-none hover:opacity-80 transition ease-in-out w-full sm:w-40">
+              <a href="/" className="select-none hover:opacity-80 transition ease-in-out w-full sm:w-40  ">
                 <h1 className="bg-black text-white px-5 py-3 border-2 rounded-md whitespace-nowrap">Latest Episode</h1>
               </a>
             </div>
-            <div className="flex-1 text-center">
+            <div className="flex-1 text-center pl-0">
               <a href="/" className="select-none hover:opacity-80 transition ease-in-out w-full sm:w-40">
                 <h1 className="bg-[#F2F2F2] text-[#797979] border-2 px-5 py-3 rounded-md whitespace-nowrap">All Episodes</h1>
               </a>
