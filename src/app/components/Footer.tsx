@@ -1,6 +1,6 @@
 import { Maven_Pro } from "next/font/google";
 import Link from "next/link";
-import { FaXTwitter, FaYoutube, FaInstagram, FaSpotify, FaTiktok } from "react-icons/fa6";
+import { FaXTwitter, FaYoutube, FaInstagram, FaSpotify, FaTiktok, FaDiscord } from "react-icons/fa6";
 
 const mavenPro = Maven_Pro({ subsets: ["latin"] });
 
@@ -30,20 +30,23 @@ export default function Footer() {
           </div>
           <div className="flex flex-col items-start justify-center mb-8 md:mb-0">
             <div className="flex space-x-4">
-              <a href="#" className="hover:opacity-75 transition ease-in-out" aria-label="X">
-                <FaXTwitter size={24} />
-              </a>
-              <a href="#" className="hover:opacity-75 transition ease-in-out" aria-label="Youtube">
+            <a href="https://www.youtube.com/c/Mabfield" className="hover:opacity-75 transition ease-in-out" aria-label="Youtube">
                 <FaYoutube size={24} />
               </a>
-              <a href="#" className="hover:opacity-75 transition ease-in-out" aria-label="Instagram">
+              <a href="https://www.instagram.com/mabfield/" className="hover:opacity-75 transition ease-in-out" aria-label="Instagram">
                 <FaInstagram size={24} />
               </a>
-              <a href="#" className="hover:opacity-75 transition ease-in-out" aria-label="Spotify">
+              <a href="https://x.com/mabfield_" className="hover:opacity-75 transition ease-in-out" aria-label="X">
+                <FaXTwitter size={24} />
+              </a>
+              <a href="https://open.spotify.com/user/mabfield" className="hover:opacity-75 transition ease-in-out" aria-label="Spotify">
                 <FaSpotify size={24} />
               </a>
-              <a href="#" className="hover:opacity-75 transition ease-in-out" aria-label="TikTok">
+              <a href="https://www.tiktok.com/@mabfield" className="hover:opacity-75 transition ease-in-out" aria-label="TikTok">
                 <FaTiktok size={24} />
+              </a>
+              <a href="/" className="hover:opacity-75 transition ease-in-out" aria-label="TikTok">
+                <FaDiscord size={24} />
               </a>
             </div>
           </div>

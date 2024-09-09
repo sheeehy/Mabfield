@@ -171,11 +171,11 @@ const Navbar: React.FC<NavbarProps> = ({ animationDelay = 0 }) => {
         ref={menuRef} 
         className="lg:hidden fixed inset-0 bg-white z-40 flex flex-col justify-center transform translate-x-full"
       >
-        <div ref={menuItemsRef} className="flex flex-col items-start gap-6 text-[#000000] font-[700] mb-12 px-8">
+        <div ref={menuItemsRef} className="flex flex-col items-start gap-8 text-black font-[700] mb-12 px-8">
           <a href="/listen" className="text-3xl" onClick={toggleMenu}>LISTEN</a>
           <a href="/episodes" className="text-3xl" onClick={toggleMenu}>EPISODES</a>
           <a href="/about" className="text-3xl" onClick={toggleMenu}>ABOUT</a>
-          <div className="flex justify-start items-center gap-8 text-2xl mt-8">
+          <div className="flex justify-start items-center gap-8 text-2xl mt-8 text-[#797979]">
             <a href="https://www.youtube.com/c/Mabfield" target="_blank" className="social-link"><FaYoutube /></a>
             <a href="https://www.instagram.com/mabfield/" target="_blank" className="social-link"><FaInstagram /></a>
             <a href="https://x.com/mabfield_" target="_blank" className="social-link"><FaXTwitter /></a>
