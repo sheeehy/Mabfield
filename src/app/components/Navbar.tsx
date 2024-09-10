@@ -17,9 +17,13 @@ const mavenPro = Maven_Pro({ subsets: ["latin"] });
 
 interface NavbarProps {
   animationDelay?: number;
+  disableAnimation?: boolean; // New prop added
 }
 
-const Navbar: React.FC<NavbarProps> = ({ animationDelay = 0 }) => {
+const Navbar: React.FC<NavbarProps> = ({
+  animationDelay = 0,
+  disableAnimation = false,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const logoRef = useRef<HTMLAnchorElement>(null);
   const socialsRef = useRef<HTMLDivElement>(null);
@@ -41,6 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ animationDelay = 0 }) => {
   });
 
   useEffect(() => {
+    if (disableAnimation) return; // Skip animation if disabled
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
     tl.delay(animationDelay);
@@ -60,7 +65,7 @@ const Navbar: React.FC<NavbarProps> = ({ animationDelay = 0 }) => {
       const animateLinks = (links: Element[] | NodeListOf<Element>) => {
         tl.fromTo(
           links,
-          { opacity: 0, y: 0 },
+          { opacity: 0, y: 0 }, // Initial opacity set to 0
           {
             opacity: 1,
             y: 0,
@@ -75,9 +80,10 @@ const Navbar: React.FC<NavbarProps> = ({ animationDelay = 0 }) => {
       animateLinks(Array.from(socialIcons));
       animateLinks(Array.from(navLinks));
     }
-  }, [animationDelay]);
+  }, [animationDelay, disableAnimation]);
 
   useEffect(() => {
+    if (disableAnimation) return; // Skip animation if disabled
     if (menuRef.current && menuItemsRef.current) {
       const menu = menuRef.current;
       const menuItems = menuItemsRef.current.children;
@@ -107,7 +113,7 @@ const Navbar: React.FC<NavbarProps> = ({ animationDelay = 0 }) => {
         });
       }
     }
-  }, [isMenuOpen]);
+  }, [isMenuOpen, disableAnimation]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -175,22 +181,15 @@ const Navbar: React.FC<NavbarProps> = ({ animationDelay = 0 }) => {
           </div>
 
           {/* Center: Logo */}
-          <div className="lg:absolute z-50 lg:left-1/2 lg:transform lg:-translate-x-1/2 hover:opacity-70 transition ease-in-out hover:scale-[0.8] scale-75">
+          <div className="lg:absolute z-50 lg:left-1/2 lg:transform lg:-translate-x-1/2 hover:opacity-70 transition ease-in-out hover:scale-110 hover:scale-y-90 scale-x-125">
             <a
               ref={logoRef}
               href="/"
               className={`${mavenPro.className} font-[900] text-black text-xl`}
             >
-              <Image
-                src="/mabfieldWordmark.png"
-                alt="Mabfield Logo"
-                className="opacity-0   "
-                width={150}
-                height={150}
-                quality={100}
-                priority={true}
-                ref={imageRef}
-              />
+              <h1 ref={imageRef} className="sm:text-3xl text-2xl">
+                MABFIELD
+              </h1>
             </a>
           </div>
 
