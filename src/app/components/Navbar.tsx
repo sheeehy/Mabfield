@@ -218,7 +218,8 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Burger Menu (visible only on mobile) */}
-          <div className="lg:hidden">
+          <div className="lg:hidden absolute top-1 right-4 ">
+            {" "}
             <button
               onClick={toggleMenu}
               className="text-[#797979] text-2xl z-50 relative w-8 h-8"
