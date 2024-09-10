@@ -15,7 +15,7 @@ const Page: React.FC = () => {
     <div>
       <Navbar animationDelay={0} disableAnimation={true} />
       <ReactLenis root>
-        <section className="mb-32 mt-44 px-4 sm:px-20 sm:text-2xl text-lg sm:text-center font-[500] mb-0 pointer-events-none ">
+        <section className="mb-32 mt-44 px-4 sm:px-20 sm:text-2xl text-lg sm:text-center font-[500]  pointer-events-none ">
           <div className="flex-col space-y-12 max-w-3xl  justify-center items-center cursor-default ">
             <h1 className="">
               Founded in 2018 by Jack Rapanakis and Dylan Murphy, Belfast based
@@ -46,7 +46,7 @@ const Page: React.FC = () => {
             </h1>
             <div className="block lg:hidden">
               <Image
-                src={`/img-2.jpg`}
+                src={`/img-7.jpg`}
                 alt=""
                 width={600}
                 height={600}
