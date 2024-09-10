@@ -108,7 +108,8 @@ section {
 }
 
 .copy {
-  margin: 1em 0;
+  margin: 0em 0;
+  margin-bottom: 10em;
   display: flex;
   flex-direction: column;
   justify-content: center;

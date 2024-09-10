@@ -136,7 +136,7 @@ const AboutAnimation: React.FC = () => {
               />
             </div>
 
-            <div className="copy ">
+            <div className="copy  ">
               <div className="line">
                 <p
                   className={`${mavenPro.className} font-[900] text-black text-xl`}

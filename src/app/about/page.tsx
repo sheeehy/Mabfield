@@ -39,7 +39,7 @@ const Page: React.FC = () => {
               Magazine for 5 years.{" "}
             </h1>
 
-            <h1 className="block lg:hidden">
+            <h1 className="">
               Now, Mabfield returns with a renewed ambition and half a decade of
               top level experience to cut through the noise, celebrate the
               artists shaping culture and connect Ireland to the world.
