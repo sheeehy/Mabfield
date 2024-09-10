@@ -9,9 +9,8 @@ import {
 } from "react-icons/fa6";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useSpring, animated } from "react-spring";
-import Image from "next/image";
-import { Maven_Pro } from "next/font/google";
 import gsap from "gsap";
+import { Maven_Pro } from "next/font/google";
 
 const mavenPro = Maven_Pro({ subsets: ["latin"] });
 
@@ -28,10 +27,11 @@ const Navbar: React.FC<NavbarProps> = ({
   const logoRef = useRef<HTMLAnchorElement>(null);
   const socialsRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuItemsRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
 
+  // Animation for menu icons
   const menuIconAnimation = useSpring({
     opacity: isMenuOpen ? 0 : 1,
     transform: `scale(${isMenuOpen ? 0.5 : 1})`,
@@ -44,6 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({
     config: { mass: 1, tension: 300, friction: 20 },
   });
 
+  // Animation for desktop navbar
   useEffect(() => {
     if (disableAnimation) return; // Skip animation if disabled
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -82,8 +83,8 @@ const Navbar: React.FC<NavbarProps> = ({
     }
   }, [animationDelay, disableAnimation]);
 
+  // Mobile menu animation
   useEffect(() => {
-    if (disableAnimation) return; // Skip animation if disabled
     if (menuRef.current && menuItemsRef.current) {
       const menu = menuRef.current;
       const menuItems = menuItemsRef.current.children;
@@ -113,7 +114,7 @@ const Navbar: React.FC<NavbarProps> = ({
         });
       }
     }
-  }, [isMenuOpen, disableAnimation]);
+  }, [isMenuOpen]);
 
   const toggleMenu = (event: React.MouseEvent) => {
     event.stopPropagation(); // Prevent event from bubbling up
@@ -219,8 +220,7 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Burger Menu (visible only on mobile) */}
-          <div className="lg:hidden absolute top-1 right-4 ">
-            {" "}
+          <div className="lg:hidden absolute top-1 right-4">
             <button
               onClick={toggleMenu}
               className="text-[#797979] text-2xl z-50 relative w-8 h-8"
@@ -243,11 +243,12 @@ const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Full Screen Mobile Menu */}
-      <div
+      <animated.div
         ref={menuRef}
-        className={`lg:hidden fixed inset-0 bg-white z-40 flex flex-col justify-center transform ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        style={{
+          transform: isMenuOpen ? "translateX(0%)" : "translateX(100%)",
+        }} // Ensure the mobile menu animates correctly
+        className={`lg:hidden fixed inset-0 bg-white z-40 flex flex-col justify-center`}
       >
         <div
           ref={menuItemsRef}
@@ -303,7 +304,7 @@ const Navbar: React.FC<NavbarProps> = ({
             </a>
           </div>
         </div>
-      </div>
+      </animated.div>
     </nav>
   );
 };
