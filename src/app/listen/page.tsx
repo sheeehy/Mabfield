@@ -17,7 +17,8 @@ const Page: React.FC = () => {
           <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mt-8">
             <a
               href="https://www.youtube.com/@Mabfield"
-              className="select-none hover:opacity-80 transition ease-in-out w-full" // Keep w-full for smaller screens
+              className="select-none hover:opacity-80 transition ease-in-out w-full"
+              target="_blank" // Keep w-full for smaller screens
             >
               <h1 className="bg-[#F2F2F2] text-[#797979] border-2 px-8 flex items-center justify-center py-3 rounded-md whitespace-nowrap">
                 <FaYoutube className="mr-2 text-xl" />
@@ -26,7 +27,8 @@ const Page: React.FC = () => {
             </a>
             <a
               href="https://podcasts.apple.com/us/podcast/mabcast/id1451452272?l=fr-EN"
-              className="select-none hover:opacity-80 transition ease-in-out w-full" // Same change as above
+              className="select-none hover:opacity-80 transition ease-in-out w-full"
+              target="_blank" // Same change as above
             >
               <h1 className="bg-[#F2F2F2] text-[#797979] border-2 px-8 flex items-center justify-center py-3 rounded-md whitespace-nowrap">
                 <FaApple className="mr-2 text-xl" />
@@ -35,7 +37,8 @@ const Page: React.FC = () => {
             </a>
             <a
               href="https://open.spotify.com/show/7Dwtks2wLibEbLivC01ulf?si=e8a678bee2954359"
-              className="select-none hover:opacity-80 transition ease-in-out w-full" // Same change as above
+              className="select-none hover:opacity-80 transition ease-in-out w-full"
+              target="_blank" // Same change as above
             >
               <h1 className="bg-[#F2F2F2] text-[#797979] border-2 px-8 flex items-center justify-center py-3 rounded-md whitespace-nowrap">
                 <FaSpotify className="mr-2 text-xl" />
@@ -44,7 +47,7 @@ const Page: React.FC = () => {
             </a>
           </div>
 
-          <div className="mt-24 hidden lg:block">
+          <div className="mt-24 hidden lg:block ">
             <iframe
               width="728"
               height="409"

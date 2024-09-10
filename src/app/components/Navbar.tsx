@@ -159,7 +159,7 @@ const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div className="hover:opacity-70 transition ease-in-out">
               <a
-                href="https://open.spotify.com/user/mabfield"
+                href="https://open.spotify.com/show/7Dwtks2wLibEbLivC01ulf?si=e8a678bee2954359"
                 target="_blank"
                 className="social-link "
               >

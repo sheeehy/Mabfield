@@ -44,6 +44,7 @@ export default function Footer() {
           <a
             href="https://www.youtube.com/c/Mabfield"
             className="hover:opacity-75 transition ease-in-out"
+            target="_blank"
             aria-label="Youtube"
           >
             <FaYoutube size={24} />
@@ -51,6 +52,7 @@ export default function Footer() {
           <a
             href="https://www.instagram.com/mabfield/"
             className="hover:opacity-75 transition ease-in-out"
+            target="_blank"
             aria-label="Instagram"
           >
             <FaInstagram size={24} />
@@ -58,13 +60,15 @@ export default function Footer() {
           <a
             href="https://x.com/mabfield_"
             className="hover:opacity-75 transition ease-in-out"
+            target="_blank"
             aria-label="X"
           >
             <FaXTwitter size={24} />
           </a>
           <a
-            href="https://open.spotify.com/user/mabfield"
+            href="https://open.spotify.com/show/7Dwtks2wLibEbLivC01ulf?si=e8a678bee2954359"
             className="hover:opacity-75 transition ease-in-out"
+            target="_blank"
             aria-label="Spotify"
           >
             <FaSpotify size={24} />
@@ -72,6 +76,7 @@ export default function Footer() {
           <a
             href="https://www.tiktok.com/@mabfield"
             className="hover:opacity-75 transition ease-in-out"
+            target="_blank"
             aria-label="TikTok"
           >
             <FaTiktok size={24} />
@@ -79,6 +84,7 @@ export default function Footer() {
           <a
             href="/"
             className="hover:opacity-75 transition ease-in-out"
+            target="_blank"
             aria-label="TikTok"
           >
             <FaDiscord size={24} />

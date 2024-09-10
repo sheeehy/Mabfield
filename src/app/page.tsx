@@ -132,7 +132,7 @@ export default function Home() {
             >
               <div className="flex-1 text-center">
                 <a
-                  href="/"
+                  href="/listen"
                   className="select-none hover:opacity-80 transition ease-in-out w-full sm:w-40  "
                 >
                   <h1 className="bg-black text-white px-5 py-3 border-2 rounded-md whitespace-nowrap">
@@ -142,7 +142,7 @@ export default function Home() {
               </div>
               <div className="flex-1 text-center pl-0">
                 <a
-                  href="/"
+                  href="/episodes"
                   className="select-none hover:opacity-80 transition ease-in-out w-full sm:w-40"
                 >
                   <h1 className="bg-[#F2F2F2] text-[#797979] border-2 px-5 py-3 rounded-md whitespace-nowrap">
