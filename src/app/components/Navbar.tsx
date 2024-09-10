@@ -115,7 +115,8 @@ const Navbar: React.FC<NavbarProps> = ({
     }
   }, [isMenuOpen, disableAnimation]);
 
-  const toggleMenu = () => {
+  const toggleMenu = (event: React.MouseEvent) => {
+    event.stopPropagation(); // Prevent event from bubbling up
     setIsMenuOpen(!isMenuOpen);
   };
 
@@ -244,7 +245,9 @@ const Navbar: React.FC<NavbarProps> = ({
       {/* Full Screen Mobile Menu */}
       <div
         ref={menuRef}
-        className="lg:hidden fixed inset-0 bg-white z-40 flex flex-col justify-center transform translate-x-full"
+        className={`lg:hidden fixed inset-0 bg-white z-40 flex flex-col justify-center transform ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
       >
         <div
           ref={menuItemsRef}

@@ -87,7 +87,7 @@ export default function Footer() {
       </div>
 
       <div className="mb-12  mt-4 text-center">
-        <p>&copy; {new Date().getFullYear()} MABFIELD. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} MABFIELD</p>
       </div>
     </footer>
   );
