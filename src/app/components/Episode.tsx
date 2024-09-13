@@ -39,8 +39,9 @@ const Episode = () => {
                 Episode 1: Introduction to v0
               </h3>
               <p className="text-muted-foreground line-clamp-2">
-                In this episode, we'll dive into the world of v0 and explore its
-                powerful features for building modern web applications.
+                In this episode, we&apos;ll dive into the world of v0 and
+                explore its powerful features for building modern web
+                applications.
               </p>
               <div className="flex items-center justify-between mt-2">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -74,8 +75,9 @@ const Episode = () => {
                   Episode 1: Introduction to v0
                 </h3>
                 <p className="text-muted-foreground">
-                  In this episode, we'll dive into the world of v0 and explore
-                  its powerful features for building modern web applications.
+                  In this episode, we&apos;ll dive into the world of v0 and
+                  explore its powerful features for building modern web
+                  applications.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
