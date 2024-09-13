@@ -93,7 +93,7 @@ export default function Home() {
       )}
 
       <div>
-        <Navbar animationDelay={isMobile ? 0 : 3.25} />
+        <Navbar animationDelay={isMobile ? 0 : 3.5} />
         <ReactLenis root>
           <div
             ref={mainContentRef}
@@ -103,11 +103,11 @@ export default function Home() {
               <div
                 id="altVideo"
                 className="absolute inset-0 -z-10 opacity-0 hidden sm:block"
-                style={{ top: "-5vh" }}
+                style={{ top: "-0vh" }}
               >
                 <video
                   className="w-full h-[102vh] mt-6 object-cover filter grayscale"
-                  src="/altVideo6.mp4"
+                  src="/altVideo7.mp4"
                   autoPlay
                   loop
                   muted
@@ -128,7 +128,7 @@ export default function Home() {
 
             <div
               id="links"
-              className="flex justify-center gap-6 sm:gap-14 mt-8 sm:mt-8 font-[500] sm:pl-3"
+              className="flex justify-center gap-8 sm:gap-12 mt-8 sm:mt-8 font-[500] sm:mr-6 "
             >
               <div className="flex-1 text-center">
                 <a
