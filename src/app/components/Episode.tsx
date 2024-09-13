@@ -44,8 +44,8 @@ const Episode: React.FC<EpisodeProps> = ({
               <img
                 src={thumbnailUrl}
                 alt={`${title} Thumbnail`}
-                width={800}
-                height={450}
+                width={400}
+                height={400}
                 className="h-full w-full object-cover"
                 style={{ aspectRatio: "800/450", objectFit: "cover" }}
               />
@@ -76,8 +76,8 @@ const Episode: React.FC<EpisodeProps> = ({
                 <img
                   src={thumbnailUrl}
                   alt={`${title} Thumbnail`}
-                  width={800}
-                  height={450}
+                  width={400}
+                  height={400}
                   className="h-full w-full object-cover"
                   style={{ aspectRatio: "800/450", objectFit: "cover" }}
                 />
