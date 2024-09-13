@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { JSX, SVGProps } from "react";
-import Image from "next/image";
 
 interface EpisodeProps {
   title: string;
@@ -42,7 +41,7 @@ const Episode: React.FC<EpisodeProps> = ({
             onClick={handleOpen}
           >
             <div className="relative aspect-video overflow-hidden rounded-md">
-              <Image
+              <img
                 src={thumbnailUrl}
                 alt={`${title} Thumbnail`}
                 width={800}
@@ -74,7 +73,7 @@ const Episode: React.FC<EpisodeProps> = ({
           <animated.div style={dialogSpring}>
             <div className="grid gap-4 rounded-lg bg-white p-4">
               <div className="relative aspect-video overflow-hidden rounded-md">
-                <Image
+                <img
                   src={thumbnailUrl}
                   alt={`${title} Thumbnail`}
                   width={800}
