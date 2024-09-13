@@ -29,3 +29,22 @@ export async function getListenData() {
   const data = await client.fetch(query);
   return data;
 }
+
+export async function getAboutData() {
+  const query = `*[_type == "about"] {
+  _id,
+  _createdAt,
+  _updatedAt,
+  title,
+  "text": Text[]{
+    ...,
+    children[]{
+      text,
+      marks
+    }
+  }
+}
+`;
+  const data = await client.fetch(query);
+  return data;
+}

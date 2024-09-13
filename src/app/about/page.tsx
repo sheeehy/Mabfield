@@ -1,65 +1,70 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import { useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ReactLenis } from "lenis/react";
 import Image from "next/image";
 import AboutAnimation from "../components/AboutAnimation";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
-gsap.registerPlugin(ScrollTrigger);
+interface AboutBlock {
+  _key: string;
+  children: Array<{ text: string }>;
+}
+
+interface AboutData {
+  text: AboutBlock[];
+}
 
 const Page: React.FC = () => {
+  const [data, setData] = useState<AboutData | null>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch("/api/AboutData"); // Fetching About Data
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const result = await res.json();
+        setData(result[0]); // Assuming result is an array, and we want the first object
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setData(null);
+      }
+    }
+    fetchData();
+  }, []);
+
   return (
     <div>
       <Navbar animationDelay={0} disableAnimation={true} />
       <ReactLenis root>
-        <section className="mb-32 mt-44 px-4 sm:px-20 sm:text-2xl text-lg sm:text-center font-[500]  pointer-events-none ">
-          <div className="flex-col space-y-12 max-w-3xl  justify-center items-center cursor-default ">
-            <h1 className="">
-              Founded in 2018 by Jack Rapanakis and Dylan Murphy, Belfast based
-              music platform Mabfield was created with a mission to showcase
-              emerging artists in Ireland and beyond and fill a void for quality
-              grassroots content.
-            </h1>
-
-            <h1>
-              Progressing from playlist curation into a weekly podcast about
-              alternative music and hip hop in Ireland, the pair have
-              interviewed artists like Jordan Adetunji, Biig Piig and hosted a
-              sold out live podcast in Belfast.{" "}
-            </h1>
-
-            <h1>
-              Throughout the podcast episodes they hosted freestyles and
-              collaborated with the BBC to create the three part radio series
-              &apos;The Evolution of Irish Hip Hop&apos;. The platform took a
-              brief hiatus while Dylan served as Head of Content at District
-              Magazine for 5 years.{" "}
-            </h1>
-
-            <h1 className="">
-              Now, Mabfield returns with a renewed ambition and half a decade of
-              top level experience to cut through the noise, celebrate the
-              artists shaping culture and connect Ireland to the world.
-            </h1>
-            <div className="block lg:hidden">
+        <section className="mb-32 mt-44 px-4 sm:px-20 sm:text-2xl text-lg sm:text-center font-[500] pointer-events-none">
+          <div className="flex-col space-y-12 max-w-3xl justify-center items-center cursor-default">
+            {data ? (
+              data.text.map((block) => (
+                <div key={block._key}>
+                  {block.children.map((child, index) => (
+                    <p key={index}>{child.text}</p>
+                  ))}
+                </div>
+              ))
+            ) : (
+              <p></p>
+            )}
+            <div className="flex justify-center items-center">
               <Image
                 src={`/img-7.jpg`}
-                alt=""
-                width={600}
-                height={600}
+                alt="About image"
+                width={300}
+                height={300}
                 priority={true}
                 quality={100}
-                className="mt-12"
+                className="mt-12 sm:mt-32 sm:w-2/3 w-full"
               />
             </div>
           </div>
         </section>
-        <div className="hidden lg:block">
-          <AboutAnimation />
-        </div>{" "}
       </ReactLenis>
     </div>
   );

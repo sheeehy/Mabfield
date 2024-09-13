@@ -59,9 +59,7 @@ const Page: React.FC = () => {
                   />
                 ))
               ) : (
-                <div className="">
-                  <ScaleLoader />{" "}
-                </div>
+                <div className="w-full flex justify-center"></div>
               )}
             </div>
           </div>
