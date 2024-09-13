@@ -176,7 +176,11 @@ const Navbar: React.FC<NavbarProps> = ({
               </a>
             </div>
             <div className="hover:opacity-70 transition ease-in-out">
-              <a href="/" target="_blank" className="social-link ">
+              <a
+                href="https://discord.gg/xDgHfJCwKA"
+                target="_blank"
+                className="social-link "
+              >
                 <FaDiscord />
               </a>
             </div>

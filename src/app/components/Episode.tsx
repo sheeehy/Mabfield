@@ -3,7 +3,23 @@ import { useSpring, animated } from "@react-spring/web";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { JSX, SVGProps } from "react";
 
-const Episode = () => {
+interface EpisodeProps {
+  title: string;
+  thumbnailUrl: string;
+  duration: string;
+  releaseDate: string;
+  description: string;
+  watchUrl: string;
+}
+
+const Episode: React.FC<EpisodeProps> = ({
+  title,
+  thumbnailUrl,
+  duration,
+  releaseDate,
+  description,
+  watchUrl,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => setIsOpen(true);
@@ -26,8 +42,8 @@ const Episode = () => {
           >
             <div className="relative aspect-video overflow-hidden rounded-md">
               <img
-                src="/image.png"
-                alt="Episode Thumbnail"
+                src={thumbnailUrl}
+                alt={`${title} Thumbnail`}
                 width={800}
                 height={450}
                 className="h-full w-full object-cover"
@@ -35,22 +51,18 @@ const Episode = () => {
               />
             </div>
             <div className="grid gap-2">
-              <h3 className="text-lg font-semibold">
-                Episode 1: Introduction to v0
-              </h3>
+              <h3 className="text-lg font-semibold line-clamp-1">{title}</h3>
               <p className="text-muted-foreground line-clamp-2">
-                In this episode, we&apos;ll dive into the world of v0 and
-                explore its powerful features for building modern web
-                applications.
+                {description}
               </p>
               <div className="flex items-center justify-between mt-2">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <ClockIcon className="h-4 w-4" />
-                  <span>45 min</span>
+                  <span>{duration}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <CalendarIcon className="h-4 w-4" />
-                  <span>June 1, 2023</span>
+                  <span>{releaseDate}</span>
                 </div>
               </div>
             </div>
@@ -62,8 +74,8 @@ const Episode = () => {
             <div className="grid gap-4 rounded-lg bg-white p-4">
               <div className="relative aspect-video overflow-hidden rounded-md">
                 <img
-                  src="/image.png"
-                  alt="Episode Thumbnail"
+                  src={thumbnailUrl}
+                  alt={`${title} Thumbnail`}
                   width={800}
                   height={450}
                   className="h-full w-full object-cover"
@@ -71,29 +83,24 @@ const Episode = () => {
                 />
               </div>
               <div className="grid gap-2">
-                <h3 className="text-lg font-semibold">
-                  Episode 1: Introduction to v0
-                </h3>
-                <p className="text-muted-foreground">
-                  In this episode, we&apos;ll dive into the world of v0 and
-                  explore its powerful features for building modern web
-                  applications.
-                </p>
+                <h3 className="text-lg font-semibold">{title}</h3>
+                <p className="text-muted-foreground">{description}</p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <ClockIcon className="h-4 w-4" />
-                    <span>45 min</span>
+                    <span>{duration}</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <CalendarIcon className="h-4 w-4" />
-                    <span>June 1, 2023</span>
+                    <span>{releaseDate}</span>
                   </div>
                 </div>
                 <div className="flex justify-start items-start">
                   <a
-                    href="https://youtube.com/mabfield"
+                    href={watchUrl}
                     target="_blank"
                     className="bg-black text-white text-center px-7 py-2 mt-2 rounded-md whitespace-nowrap select-none hover:opacity-80 transition ease-in-out "
+                    rel="noreferrer"
                   >
                     Watch
                   </a>
@@ -106,7 +113,6 @@ const Episode = () => {
     </div>
   );
 };
-
 function CalendarIcon(
   props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
 ) {

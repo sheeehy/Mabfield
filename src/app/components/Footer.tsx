@@ -82,7 +82,7 @@ export default function Footer() {
             <FaTiktok size={24} />
           </a>
           <a
-            href="/"
+            href="https://discord.gg/xDgHfJCwKA"
             className="hover:opacity-75 transition ease-in-out"
             target="_blank"
             aria-label="TikTok"
