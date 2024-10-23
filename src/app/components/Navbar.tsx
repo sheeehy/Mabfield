@@ -148,9 +148,9 @@ const Navbar: React.FC<NavbarProps> = ({ animationDelay = 0, disableAnimation = 
           </div>
 
           {/* Center: Logo */}
-          <div className="lg:absolute z-50 lg:left-1/2 lg:transform lg:-translate-x-1/2 hover:opacity-70 transition ease-in-out hover:scale-110 hover:scale-y-90 scale-x-125">
-            <Link ref={logoRef} href="/">
-              <Image src="/wordmark.png" alt="Logo" width={120} height={120} quality={100} />
+          <div className="lg:absolute  lg:left-1/2 lg:transform lg:-translate-x-1/2 hover:opacity-70 transition ease-in-out hover:scale-110 hover:scale-y-[0.95] scale-x-125">
+            <Link ref={logoRef} href="/" className="-z-50">
+              <Image src="/wordmark.png" alt="Logo" width={120} height={120} quality={100} className="-z-50" />
             </Link>
           </div>
 

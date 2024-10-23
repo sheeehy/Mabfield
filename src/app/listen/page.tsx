@@ -38,40 +38,23 @@ const Page: React.FC = () => {
       <ReactLenis root>
         <div className="flex flex-col justify-center items-center my-64">
           <h1 className="font-[900] sm:text-7xl text-5xl">LISTEN</h1>
-          <h2 className="mt-4 sm:text-2xl text">
-            The latest in alternative sounds via Ireland.
-          </h2>
+          <h2 className="mt-4 sm:text-2xl text">Showcasing the underrated artists in Ireland and beyond.</h2>
           <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mt-8">
             {data && (
               <>
-                <a
-                  href={data.youtubeUrl}
-                  className="select-none hover:opacity-80 transition ease-in-out w-full"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={data.youtubeUrl} className="select-none hover:opacity-80 transition ease-in-out w-full" target="_blank" rel="noopener noreferrer">
                   <h1 className="bg-[#F2F2F2] text-[#797979] border-2 px-8 flex items-center justify-center py-3 rounded-md whitespace-nowrap">
                     <FaYoutube className="mr-2 text-xl" />
                     Youtube
                   </h1>
                 </a>
-                <a
-                  href={data.appleUrl}
-                  className="select-none hover:opacity-80 transition ease-in-out w-full"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={data.appleUrl} className="select-none hover:opacity-80 transition ease-in-out w-full" target="_blank" rel="noopener noreferrer">
                   <h1 className="bg-[#F2F2F2] text-[#797979] border-2 px-8 flex items-center justify-center py-3 rounded-md whitespace-nowrap">
                     <FaApple className="mr-2 text-xl" />
                     Apple Podcasts
                   </h1>
                 </a>
-                <a
-                  href={data.spotifyUrl}
-                  className="select-none hover:opacity-80 transition ease-in-out w-full"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={data.spotifyUrl} className="select-none hover:opacity-80 transition ease-in-out w-full" target="_blank" rel="noopener noreferrer">
                   <h1 className="bg-[#F2F2F2] text-[#797979] border-2 px-8 flex items-center justify-center py-3 rounded-md whitespace-nowrap">
                     <FaSpotify className="mr-2 text-xl" />
                     Spotify
