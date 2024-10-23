@@ -14,7 +14,7 @@ export default function Footer() {
           <div className={`${mavenPro.className} font-[900]  `}>
             <h2 className=" text-2xl  text-black mb-4 ">
               {" "}
-              <Image src="/wordmark.png" alt="Logo" width={180} height={180} quality={100} />
+              <Image src="/wordmark.png" alt="Logo" width={120} height={120} quality={100} />
             </h2>
           </div>
           <nav className="space-y-2">
