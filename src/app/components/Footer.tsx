@@ -12,10 +12,9 @@ export default function Footer() {
       <div className="flex flex-col items-center w-full">
         <div className="flex flex-col items-start mb-8 w-full">
           <div className={`${mavenPro.className} font-[900]  `}>
-            <h2 className=" text-2xl  text-black mb-4 ">
-              {" "}
-              <Image src="/wordmark.png" alt="Logo" width={120} height={120} quality={100} />
-            </h2>
+            <Link href="/">
+              <Image src="/wordmark.png" alt="Logo" width={130} height={130} quality={100} />
+            </Link>
           </div>
           <nav className="space-y-2">
             <a href="/episodes" className="block hover:opacity-75 transition ease-in-out cursor-pointer">
