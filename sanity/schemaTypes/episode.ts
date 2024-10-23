@@ -36,6 +36,7 @@ export const episode = defineType({
       title: 'Description',
       type: 'text',
       description: 'Brief description of the episode',
+      validation: Rule => Rule.max(350).warning('Description should be under 350 characters.'),
     },
     {
       name: 'watchUrl',

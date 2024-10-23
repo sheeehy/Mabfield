@@ -32,7 +32,7 @@ export default function Footer() {
         {/* Section with Site Credits, Socials, and Copyright */}
         <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4 items-center mb-12">
           {/* Site Credits */}
-          <a href="/about" className="hover:opacity-75 transition ease-in-out text-center sm:text-left">
+          <a href="/about" className="hover:opacity-75 transition ease-in-out text-center sm:text-left text-sm">
             Site Credits
           </a>
 
