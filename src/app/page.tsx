@@ -8,12 +8,13 @@ import { ReactLenis } from "lenis/react";
 
 const mavenPro = Maven_Pro({ subsets: ["latin"] });
 
+// Custom hook to detect if the device is mobile
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 640);
+      setIsMobile(window.innerWidth < 640); // Adjust this value as needed
     };
 
     checkIsMobile();
@@ -34,17 +35,7 @@ export default function Home() {
   useEffect(() => {
     if (!isMobile && videoRef.current) {
       videoRef.current.play();
-      videoRef.current.onended = () => {
-        setVideoFinished(true);
-        if (videoRef.current) {
-          videoRef.current.style.opacity = "0";
-          setTimeout(() => {
-            if (videoRef.current) {
-              videoRef.current.style.display = "none";
-            }
-          }, 1000); // Wait for fade out animation to complete
-        }
-      };
+      videoRef.current.onended = () => setVideoFinished(true);
     } else {
       setVideoFinished(true);
     }
@@ -77,13 +68,13 @@ export default function Home() {
 
   return (
     <div className="relative">
-      {!isMobile && (
-        <div className="fixed inset-0 z-50 transition-opacity duration-1000">
+      {!isMobile && !videoFinished && (
+        <div className="fixed inset-0 z-50">
           <video ref={videoRef} className="w-full h-full object-cover filter grayscale" src="/intro2.mp4" autoPlay muted playsInline preload="auto" />
         </div>
       )}
 
-      <div className={`transition-opacity duration-500 ${videoFinished ? "opacity-100" : "opacity-0"}`}>
+      <div>
         <Navbar animationDelay={isMobile ? 0 : 3.5} />
         <ReactLenis root>
           <div ref={mainContentRef} className="flex min-h-screen flex-col items-center justify-center sm:pb-24 pb-8 px-4 text-black opacity-0">
