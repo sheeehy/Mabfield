@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className="bg-transparent text-[#797979] w-full px-4 sm:px-24">
       <div className="flex flex-col items-center w-full">
         <div className="flex flex-col items-start mb-8 w-full">
-          <div className={`${mavenPro.className} font-[900]  `}>
+          <div className={`${mavenPro.className} font-[900]  mb-4`}>
             <Link href="/">
               <Image src="/wordmark.png" alt="Logo" width={120} height={120} quality={100} />
             </Link>
@@ -56,7 +56,7 @@ export default function Footer() {
       </div>
 
       <div className="mb-12  mt-4 text-center">
-        <p>&copy; {new Date().getFullYear()}MABFIELD </p>
+        <p>&copy; {new Date().getFullYear()} MABFIELD </p>
       </div>
     </footer>
   );
