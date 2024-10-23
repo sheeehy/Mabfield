@@ -1,16 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  FaXTwitter,
-  FaYoutube,
-  FaInstagram,
-  FaSpotify,
-  FaTiktok,
-  FaDiscord,
-} from "react-icons/fa6";
+import { FaXTwitter, FaYoutube, FaInstagram, FaSpotify, FaTiktok, FaDiscord } from "react-icons/fa6";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useSpring, animated } from "react-spring";
 import gsap from "gsap";
 import { Maven_Pro } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
 
 const mavenPro = Maven_Pro({ subsets: ["latin"] });
 
@@ -19,10 +14,7 @@ interface NavbarProps {
   disableAnimation?: boolean; // New prop added
 }
 
-const Navbar: React.FC<NavbarProps> = ({
-  animationDelay = 0,
-  disableAnimation = false,
-}) => {
+const Navbar: React.FC<NavbarProps> = ({ animationDelay = 0, disableAnimation = false }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const logoRef = useRef<HTMLAnchorElement>(null);
   const socialsRef = useRef<HTMLDivElement>(null);
@@ -52,11 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({
     tl.delay(animationDelay);
 
     if (imageRef.current) {
-      tl.fromTo(
-        imageRef.current,
-        { opacity: 0, scale: 0.8 },
-        { opacity: 1, scale: 1, duration: 1, ease: "back.out(1.7)" }
-      );
+      tl.fromTo(imageRef.current, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 1, ease: "back.out(1.7)" });
     }
 
     if (socialsRef.current && linksRef.current) {
@@ -126,61 +114,34 @@ const Navbar: React.FC<NavbarProps> = ({
       <div className="text-[#797979] text-sm font-[500]">
         <div className="flex justify-between items-center px-4 lg:px-8 pt-6 bg-transparent">
           {/* Left: Social Media Icons (hidden on mobile) */}
-          <div
-            ref={socialsRef}
-            className="hidden lg:flex flex-shrink-0 justify-center items-center gap-5 text-lg"
-          >
+          <div ref={socialsRef} className="hidden lg:flex flex-shrink-0 justify-center items-center gap-5 text-lg">
             <div className="hover:opacity-70 transition ease-in-out">
-              <a
-                href="https://www.youtube.com/c/Mabfield"
-                target="_blank"
-                className="hover:opacity-70 transition ease-in-out social-link "
-              >
+              <a href="https://www.youtube.com/c/Mabfield" target="_blank" className="hover:opacity-70 transition ease-in-out social-link ">
                 <FaYoutube />
               </a>
             </div>
             <div className="hover:opacity-70 transition ease-in-out">
-              <a
-                href="https://www.instagram.com/mabfield/"
-                target="_blank"
-                className="social-link "
-              >
+              <a href="https://www.instagram.com/mabfield/" target="_blank" className="social-link ">
                 <FaInstagram />
               </a>
             </div>
             <div className="hover:opacity-70 transition ease-in-out">
-              <a
-                href="https://x.com/mabfield_"
-                target="_blank"
-                className="social-link "
-              >
+              <a href="https://x.com/mabfield_" target="_blank" className="social-link ">
                 <FaXTwitter />
               </a>
             </div>
             <div className="hover:opacity-70 transition ease-in-out">
-              <a
-                href="https://open.spotify.com/show/7Dwtks2wLibEbLivC01ulf?si=e8a678bee2954359"
-                target="_blank"
-                className="social-link "
-              >
+              <a href="https://open.spotify.com/show/7Dwtks2wLibEbLivC01ulf?si=e8a678bee2954359" target="_blank" className="social-link ">
                 <FaSpotify />
               </a>
             </div>
             <div className="hover:opacity-70 transition ease-in-out">
-              <a
-                href="https://www.tiktok.com/@mabfield"
-                target="_blank"
-                className="social-link "
-              >
+              <a href="https://www.tiktok.com/@mabfield" target="_blank" className="social-link ">
                 <FaTiktok />
               </a>
             </div>
             <div className="hover:opacity-70 transition ease-in-out">
-              <a
-                href="https://discord.gg/xDgHfJCwKA"
-                target="_blank"
-                className="social-link "
-              >
+              <a href="https://discord.gg/xDgHfJCwKA" target="_blank" className="social-link ">
                 <FaDiscord />
               </a>
             </div>
@@ -188,22 +149,13 @@ const Navbar: React.FC<NavbarProps> = ({
 
           {/* Center: Logo */}
           <div className="lg:absolute z-50 lg:left-1/2 lg:transform lg:-translate-x-1/2 hover:opacity-70 transition ease-in-out hover:scale-110 hover:scale-y-90 scale-x-125">
-            <a
-              ref={logoRef}
-              href="/"
-              className={`${mavenPro.className} font-[900] text-black text-xl`}
-            >
-              <h1 ref={imageRef} className="sm:text-3xl text-2xl">
-                MABFIELD
-              </h1>
-            </a>
+            <Link ref={logoRef} href="/">
+              <Image src="/wordmark.png" alt="Logo" width={130} height={130} quality={100} />
+            </Link>
           </div>
 
           {/* Right: Navigation Links (hidden on mobile) */}
-          <div
-            ref={linksRef}
-            className="hidden lg:block flex-shrink-0 text-[#797979] font-[700]"
-          >
+          <div ref={linksRef} className="hidden lg:block flex-shrink-0 text-[#797979] font-[700]">
             <div className="flex justify-center items-center gap-12">
               <div className="hover:opacity-75 transition ease-in-out ">
                 <a href="/listen" className=" ">
@@ -225,20 +177,11 @@ const Navbar: React.FC<NavbarProps> = ({
 
           {/* Burger Menu (visible only on mobile) */}
           <div className="lg:hidden absolute top-1 right-4">
-            <button
-              onClick={toggleMenu}
-              className="text-[#797979] text-2xl z-50 relative w-8 h-8"
-            >
-              <animated.div
-                style={menuIconAnimation}
-                className="absolute inset-0 flex items-center justify-center"
-              >
+            <button onClick={toggleMenu} className="text-[#797979] text-2xl z-50 relative w-8 h-8">
+              <animated.div style={menuIconAnimation} className="absolute inset-0 flex items-center justify-center">
                 <FaBars />
               </animated.div>
-              <animated.div
-                style={closeIconAnimation}
-                className="absolute inset-0 flex items-center justify-center"
-              >
+              <animated.div style={closeIconAnimation} className="absolute inset-0 flex items-center justify-center">
                 <FaTimes />
               </animated.div>
             </button>
@@ -254,10 +197,7 @@ const Navbar: React.FC<NavbarProps> = ({
         }} // Ensure the mobile menu animates correctly
         className={`lg:hidden fixed inset-0 bg-white z-40 flex flex-col justify-center`}
       >
-        <div
-          ref={menuItemsRef}
-          className="flex flex-col items-start gap-8 text-black font-[700] mb-12 px-8"
-        >
+        <div ref={menuItemsRef} className="flex flex-col items-start gap-8 text-black font-[700] mb-12 px-8">
           <a href="/listen" className="text-3xl" onClick={toggleMenu}>
             LISTEN
           </a>
@@ -268,39 +208,19 @@ const Navbar: React.FC<NavbarProps> = ({
             ABOUT
           </a>
           <div className="flex justify-start items-center gap-8 text-2xl mt-8 text-[#797979]">
-            <a
-              href="https://www.youtube.com/c/Mabfield"
-              target="_blank"
-              className="social-link"
-            >
+            <a href="https://www.youtube.com/c/Mabfield" target="_blank" className="social-link">
               <FaYoutube />
             </a>
-            <a
-              href="https://www.instagram.com/mabfield/"
-              target="_blank"
-              className="social-link"
-            >
+            <a href="https://www.instagram.com/mabfield/" target="_blank" className="social-link">
               <FaInstagram />
             </a>
-            <a
-              href="https://x.com/mabfield_"
-              target="_blank"
-              className="social-link"
-            >
+            <a href="https://x.com/mabfield_" target="_blank" className="social-link">
               <FaXTwitter />
             </a>
-            <a
-              href="https://open.spotify.com/user/mabfield"
-              target="_blank"
-              className="social-link"
-            >
+            <a href="https://open.spotify.com/user/mabfield" target="_blank" className="social-link">
               <FaSpotify />
             </a>
-            <a
-              href="https://www.tiktok.com/@mabfield"
-              target="_blank"
-              className="social-link"
-            >
+            <a href="https://www.tiktok.com/@mabfield" target="_blank" className="social-link">
               <FaTiktok />
             </a>
             <a href="/" target="_blank" className="social-link">
