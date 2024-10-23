@@ -40,7 +40,7 @@ const Page: React.FC = () => {
       <ReactLenis root>
         <div className="flex flex-col justify-center items-center my-64">
           <h1 className="font-[900] sm:text-7xl text-5xl">EPISODES</h1>
-          <h2 className="mt-4 sm:text-2xl px-4 sm:px-20">The latest in alternative sounds via Ireland.</h2>
+          <h2 className="mt-4 sm:text-2xl px-4 sm:px-20 text-center">The latest in alternative sounds via Ireland.</h2>
 
           <div className="flex flex-col px-4 sm:px-12 w-full mt-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
