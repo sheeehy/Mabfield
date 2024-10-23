@@ -38,7 +38,7 @@ const Page: React.FC = () => {
       <ReactLenis root>
         <div className="flex flex-col justify-center items-center my-64">
           <h1 className="font-[900] sm:text-7xl text-5xl">LISTEN</h1>
-          <h2 className="mt-4 sm:text-2xl text">Showcasing the underrated artists in Ireland and beyond.</h2>
+          <h2 className="mt-4 sm:text-2xl text px-4 sm:px-20">Showcasing the underrated artists in Ireland and beyond.</h2>
           <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mt-8">
             {data && (
               <>
