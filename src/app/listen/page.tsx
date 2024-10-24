@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navbar from "../components/Navbar";
 import { ReactLenis } from "lenis/react";
 import { FaApple, FaYoutube, FaSpotify } from "react-icons/fa";
@@ -11,9 +10,9 @@ interface ListenData {
 }
 
 const Page: React.FC = () => {
-  const [data, setData] = useState<ListenData | null>(null);
+  const [data, setData] = React.useState<ListenData | null>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     async function fetchData() {
       try {
         const res = await fetch("/api/ListenData");
@@ -21,7 +20,7 @@ const Page: React.FC = () => {
           throw new Error("Failed to fetch data");
         }
         const result = await res.json();
-        setData(result[0]); // Assuming `result` is an array, we take the first item
+        setData(result[0]); // Assuming `result` is an array
       } catch (error) {
         console.error("Error fetching data:", error);
         setData(null);
@@ -30,7 +29,7 @@ const Page: React.FC = () => {
     fetchData();
   }, []);
 
-  console.log(data);
+  const youtubeThumbnail = data ? `https://img.youtube.com/vi/${data.youtubeUrl.split("v=")[1].split("&")[0]}/hqdefault.jpg` : null;
 
   return (
     <div>
@@ -65,16 +64,10 @@ const Page: React.FC = () => {
           </div>
 
           <div className="mt-24 hidden lg:block">
-            {data && data.youtubeUrl && (
-              <div className="mt-24 hidden lg:block">
-                <iframe
-                  width="728"
-                  height="409"
-                  src={data.youtubeUrl}
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-                ></iframe>
-              </div>
+            {youtubeThumbnail && (
+              <a href={data?.youtubeUrl} target="_blank" rel="noopener noreferrer">
+                <img src={youtubeThumbnail} alt="YouTube Video Thumbnail" className="hover:opacity-80 transition ease-in-out w-full" />
+              </a>
             )}
           </div>
         </div>
