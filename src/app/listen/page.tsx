@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Navbar from "../components/Navbar";
 import { ReactLenis } from "lenis/react";
@@ -62,13 +63,20 @@ const Page: React.FC = () => {
               </>
             )}
           </div>
-
-          <div className="mt-24 hidden lg:block">
-            {youtubeThumbnail && (
-              <a href={data?.youtubeUrl} target="_blank" rel="noopener noreferrer">
-                <img src={youtubeThumbnail} alt="YouTube Video Thumbnail" className="hover:opacity-80 transition ease-in-out w-full" />
-              </a>
-            )}
+          <div className="flex justify-center w-full">
+            <div className="mt-12 hidden lg:block relative w-full max-w-2xl">
+              {youtubeThumbnail && (
+                <a href={data?.youtubeUrl} target="_blank" rel="noopener noreferrer">
+                  <div className="relative w-full h-0 pb-[56.25%]">
+                    <img
+                      src={youtubeThumbnail}
+                      alt="YouTube Video Thumbnail"
+                      className="absolute top-0 left-0 w-full h-full object-cover hover:opacity-80 transition ease-in-out"
+                    />
+                  </div>
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </ReactLenis>
