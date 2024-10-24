@@ -16,8 +16,7 @@ export const about = defineType({
           lists: [],
           marks: {
             decorators: [
-              {title: 'Strong', value: 'strong'},
-              {title: 'Emphasis', value: 'em'},
+          
             ],
             annotations: [],
           },
