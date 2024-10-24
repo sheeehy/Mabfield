@@ -68,7 +68,7 @@ const Page: React.FC = () => {
             <iframe
               width="728"
               height="409"
-              src="https://www.youtube.com/embed/7cJnNDuT0XM?si=7rHQnLLttXfjbJ0v"
+              src={data.youtubeUrl}
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
             ></iframe>
