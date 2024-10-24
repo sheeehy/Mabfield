@@ -64,7 +64,7 @@ const Page: React.FC = () => {
             )}
           </div>
           <div className="flex justify-center w-full">
-            <div className="mt-12 hidden lg:block relative w-full max-w-2xl">
+            <div className="mt-12 hidden lg:block relative w-full max-w-xl">
               {youtubeThumbnail && (
                 <a href={data?.youtubeUrl} target="_blank" rel="noopener noreferrer">
                   <div className="relative w-full h-0 pb-[56.25%]">
