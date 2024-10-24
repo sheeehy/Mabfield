@@ -65,13 +65,17 @@ const Page: React.FC = () => {
           </div>
 
           <div className="mt-24 hidden lg:block">
-            <iframe
-              width="728"
-              height="409"
-              src={data.youtubeUrl}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-            ></iframe>
+            {data && data.youtubeUrl && (
+              <div className="mt-24 hidden lg:block">
+                <iframe
+                  width="728"
+                  height="409"
+                  src={data.youtubeUrl}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                ></iframe>
+              </div>
+            )}
           </div>
         </div>
       </ReactLenis>
