@@ -85,7 +85,7 @@ export default function Home() {
             )}
 
             <div className="z-10 text-center sm:mt-0 mt-44 pointer-events-none select-none">
-              <p id="mainHeading" className="font-[900] text-[2rem] sm:text-[4rem] max-w-3xl leading-[1.1] text-black">
+              <p id="mainHeading" className="font-[900] text-[2rem] sm:text-[5rem] max-w-3xl leading-[1.1] text-black">
                 MUSIC&apos;S HIDDEN GEMS.
               </p>
             </div>
