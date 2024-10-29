@@ -15,7 +15,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "MABFIELD",
-  description: "Alternative Sounds via Ireland",
+  description: "Music's Hidden Gems",
 };
 
 export default function RootLayout({
